@@ -1,7 +1,7 @@
 {
   "name": "my-ecommerce",
   "version": "1.0.0",
-  "description": "My stylish Nuxt.js project",
+  "description": "A ecommerce website built with nuxt.",
   "author": "howard",
   "private": true,
   "scripts": {
@@ -15,7 +15,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",

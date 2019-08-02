@@ -1,0 +1,27 @@
+@import './storeGrid.scss';
+
+body {
+  border: 10px solid #ccc;
+  min-height: 100vh;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: black;
+  font-weight: 700;
+  &:hover {
+    background: black;
+    border: 1px solid black;
+    color: white;
+  }
+}
+
+input[type='range'] {
+  width: 100%;
+  margin: 25px 0 5px;
+}
