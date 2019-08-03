@@ -17,3 +17,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+main {
+  width: 90vw;
+  margin: 0 auto;
+}
+</style>

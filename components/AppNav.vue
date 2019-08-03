@@ -1,6 +1,6 @@
 <template lang="pug">
   header
-    h1 Skyline Ivy
+    h1 瘋狂購物城
     nav
       ul
         li
@@ -46,6 +46,7 @@ nav {
       text-transform: uppercase;
       font-size: 13px;
       padding: 0 20px;
+      position: relative;
       a {
         color: black;
         &:hover {
@@ -57,11 +58,15 @@ nav {
 }
 
 .cart {
+  position: absolute;
   background: black;
   border-radius: 1000px;
   color: white;
   font-size: 10px;
-  padding: 3px;
+  padding: 3px 10px;
   text-align: center;
+  top: -18px;
+  right: 5px;
+  font-weight: bold;
 }
 </style>

@@ -8,7 +8,7 @@
         h3 {{item.name}}
         h4.price {{item.price | dollar}}
         NuxtLink(:to="`product/${item.id}`")
-          button.multi-item View Item
+          button View Item
     aside
       h3 特賣
       p 好康活動只到7/15 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -64,5 +64,24 @@ export default {
 
 .max {
   float: right;
+}
+
+.items-leave-active {
+  transition: opacity 0.2s ease-out, scale 0.2s ease-out;
+}
+
+.items-move {
+  transition: opacity 0.2s ease-out, scale 0.2s ease-out;
+}
+
+.items-enter-active {
+  transition: opacity 0.2s ease-out, scale 0.2s ease-out;
+}
+
+.items-enter,
+.items-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+  transform-origin: 50% 50%;
 }
 </style>
