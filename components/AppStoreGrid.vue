@@ -67,21 +67,20 @@ export default {
 }
 
 .items-leave-active {
-  transition: opacity 0.2s ease-out, scale 0.2s ease-out;
+  transition: opacity 0.2s ease, scale 0.2s ease;
 }
 
 .items-move {
-  transition: opacity 0.2s ease-out, scale 0.2s ease-out;
+  transition: opacity 0.5s ease-out, scale 0.2s ease-out;
 }
 
 .items-enter-active {
-  transition: opacity 0.2s ease-out, scale 0.2s ease-out;
+  transition: opacity 0.5s ease-out, scale 0.5s ease-out;
 }
 
 .items-enter,
 .items-leave-to {
   opacity: 0;
-  transform: scale(0.9);
-  transform-origin: 50% 50%;
+  transform: scale(0.8);
 }
 </style>
