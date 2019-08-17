@@ -21,7 +21,6 @@ export const actions = {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
         starts_with: 'products'
       })
-      console.log('call action getStoryblok in vuex')
       commit('GET_STORYBLOK', {
         storyblokProducts: res.data.stories.map((product) => {
           return {
