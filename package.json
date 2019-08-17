@@ -1,6 +1,9 @@
 {
   "name": "my-ecommerce",
   "version": "1.0.0",
+  "engines": {
+    "yarn": "1.17.3"
+  },
   "description": "A ecommerce website built with nuxt.",
   "author": "howard",
   "private": true,
