@@ -1,8 +1,8 @@
 <template lang="pug">
-  div
+  div(v-editable="blok")
     section.item-contain
       section.img
-        img(:src="`/products/${product.img}`")
+        img(:src="product.img")
       section.product-info
         h1 {{product.name}}
         h4.price {{product.price | dollar}}
@@ -16,21 +16,38 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
+  head() {
+    return {
+      title: this.product.name
+    }
+  },
   data() {
     return {
-      id: this.$route.params.id,
       quantity: 1,
       tempcart: []
     }
   },
-  computed: {
-    ...mapState(['storedata']),
-    product() {
-      return this.storedata.find((el) => el.id === this.id)
+  async asyncData(context) {
+    try {
+      const res = await context.app.$storyapi.get(
+        `cdn/stories/products/${context.params.id}`,
+        {
+          version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
+        }
+      )
+      return {
+        blok: res.data.story.content,
+        product: res.data.story.content
+      }
+    } catch (e) {
+      throw new Error(e.message)
     }
+  },
+  mounted() {
+    this.$storybridge.on('change', () => {
+      location.reload(true)
+    })
   },
   methods: {
     cartAdd() {

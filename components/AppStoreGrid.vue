@@ -4,9 +4,10 @@
       .item(v-for="item in filteredPrice" :key="item.id")
         .img-contain
           NuxtLink(:to="`product/${item.id}`")
-            img(:src="`/products/${item.img}`")
+            img(:src="item.img")
         h3 {{item.name}}
-        h4.price {{item.price | dollar}}
+        p {{item.description}}
+        h4.price {{item.price | dollar}}    
         NuxtLink(:to="`product/${item.id}`")
           button View Item
     aside
@@ -36,7 +37,9 @@ export default {
   },
   computed: {
     filteredPrice() {
-      return this.dat.filter((el) => el.price < this.priceRange)
+      return this.dat.filter((el) => {
+        return el.price < this.priceRange
+      })
     }
   }
 }

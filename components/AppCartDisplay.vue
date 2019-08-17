@@ -15,7 +15,7 @@
             th 總共
           tr(v-for="item in cart" :key="item.id")
             td.product-info
-              img(:src="`/products/${item.img}`" :alt="item.name")
+              img(:src="item.img" :alt="item.name")
               h3 {{item.name}}
             td
               h4 {{item.price | dollar}}

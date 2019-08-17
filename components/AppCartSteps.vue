@@ -45,7 +45,7 @@ h2 {
   height: 80px;
   padding-top: 25px;
   margin: 0;
-  box-sizing: border-box;
+
   &.active {
     background: #d96528;
     border: 1px solid #d96528;

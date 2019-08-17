@@ -14,7 +14,14 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -39,11 +46,22 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    // 這樣就不用每個template都import axios
+    // 用context.$axios.get()
+    '@nuxtjs/axios',
+    [
+      'storyblok-nuxt',
+      {
+        accessToken:
+          process.env.NODE_ENV === 'production'
+            ? 'q32q4MGtQBlJpZ88t45f4Qtt'
+            : 'JRApuATxy6Jr3ojknK1YSgtt',
+        cacheProvider: 'memory'
+      }
+    ]
   ],
   /*
-   ** Axios module configuration
+   ** Axios module configuratio
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},

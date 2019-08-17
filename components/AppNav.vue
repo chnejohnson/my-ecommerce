@@ -10,6 +10,11 @@
         li
           .cart(v-if="cartCount > 0") {{cartCount}}
           nuxt-link(to="/cart") Cart
+        li
+          a(@click="$emit('modal')" v-if="!$store.state.auth.isLogin") 登入(註冊)
+          a(v-else @click="logout") 登出
+        li
+          nuxt-link(to="/user/account" v-if="$store.state.auth.isLogin").no-underline 帳戶
 </template>
 
 <script>
@@ -18,6 +23,15 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters(['cartCount'])
+  },
+  methods: {
+    async logout() {
+      try {
+        await this.$store.dispatch('auth/logout')
+      } catch (e) {
+        console.log(e.response)
+      }
+    }
   }
 }
 </script>
@@ -44,15 +58,9 @@ nav {
     li {
       display: inline;
       text-transform: uppercase;
-      font-size: 13px;
+      font-size: 16px;
       padding: 0 20px;
       position: relative;
-      a {
-        color: black;
-        &:hover {
-          color: #c14103;
-        }
-      }
     }
   }
 }

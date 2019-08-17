@@ -1,17 +1,10 @@
-// import axios from 'axios'
-// import uuidv1 from 'uuid/v1'
-import data from '~/static/storedata.json'
-
 export const state = () => ({
   cartUIStatus: 'idle',
-  storedata: data,
   cart: []
 })
 
 export const getters = {
-  featuredProducts: (state) => state.storedata.slice(0, 3), // 取前三個商品
   cartCount: (state) => {
-    console.log('cartCount is called.')
     if (!state.cart.length) return 0
     return state.cart.reduce((acc, cur) => acc + cur.quantity, 0)
   },
@@ -32,5 +25,16 @@ export const mutations = {
       return e
     })
     if (!itemFound) state.cart.push(payload)
+  }
+}
+
+export const actions = {
+  async nuxtServerInit({ dispatch }, { app }) {
+    try {
+      console.log('call nuxtServerInit')
+      await dispatch('products/getStoryblok', app)
+    } catch (e) {
+      throw new Error(e.message)
+    }
   }
 }

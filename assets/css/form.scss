@@ -1,0 +1,66 @@
+.title {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 0;
+  text-transform: uppercase;
+  i {
+    margin-right: 20px;
+  }
+}
+
+.form {
+  padding: 0 5%;
+  label,
+  button {
+    margin: 10px 0;
+    font-size: 20px;
+    border-radius: 5px;
+    border: solid 1px gray;
+  }
+  label {
+    @include size(100%, 50px);
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+
+    i {
+      display: inline-flex;
+      margin-right: 10px;
+    }
+    input {
+      @include size(100%);
+      border-radius: 5px;
+      border: none;
+      background: transparent;
+      &:focus {
+        border: none;
+      }
+    }
+  }
+  .btn-group {
+    display: flex;
+    @include size(auto);
+    :nth-child(1) {
+      flex: 1;
+      margin-right: 10px;
+    }
+    :nth-child(2) {
+      flex: 2;
+    }
+  }
+  button {
+    display: inline-flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.795);
+    color: white;
+    &:hover {
+      background: rgba(0, 0, 0, 0.459);
+    }
+  }
+}
+
+.error {
+  text-align: center;
+  color: red;
+  font-size: 15px;
+}

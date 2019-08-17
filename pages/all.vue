@@ -1,18 +1,14 @@
 <template lang="pug">
   div
-    app-store-grid(:dat="storedata")
+    app-store-grid(:dat="$store.state.products.products")
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import AppStoreGrid from '~/components/AppStoreGrid.vue'
 
 export default {
   components: {
     AppStoreGrid
-  },
-  computed: {
-    ...mapState(['storedata'])
   }
 }
 </script>
