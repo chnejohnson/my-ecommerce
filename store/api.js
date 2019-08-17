@@ -4,7 +4,9 @@ const authHeader = { Authorization: `Bearer ${localStorage.token}` }
 
 const userRequest = axios.create({
   baseURL:
-    process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000/users'
+    process.env.NODE_ENV === 'production'
+      ? 'https://johnson-task-manager.herokuapp.com'
+      : 'http://localhost:4000/users'
 })
 
 // auth
