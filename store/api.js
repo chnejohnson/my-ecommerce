@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-const authHeader = { Authorization: `Bearer ${localStorage.token}` }
-
 const userRequest = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
@@ -13,9 +11,18 @@ const userRequest = axios.create({
 export const apiSignup = (data) => userRequest.post('/', data)
 export const apiLogin = (data) => userRequest.post('/login', data)
 export const apiLogout = () =>
-  userRequest.post('/logout', {}, { headers: authHeader })
+  userRequest.post(
+    '/logout',
+    {},
+    { headers: { Authorization: `Bearer ${localStorage.token}` } }
+  )
 
 // user
-export const apiProfile = () => userRequest.get('/me', { headers: authHeader })
+export const apiProfile = () =>
+  userRequest.get('/me', {
+    headers: { Authorization: `Bearer ${localStorage.token}` }
+  })
 export const apiUploadAvatar = (file) =>
-  userRequest.post('/me/avatar', file, { headers: authHeader })
+  userRequest.post('/me/avatar', file, {
+    headers: { Authorization: `Bearer ${localStorage.token}` }
+  })
