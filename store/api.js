@@ -3,7 +3,7 @@ import axios from 'axios'
 const userRequest = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
-      ? 'https://johnson-task-manager.herokuapp.com'
+      ? 'https://johnson-task-manager.herokuapp.com/users'
       : 'http://localhost:4000/users'
 })
 
