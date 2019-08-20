@@ -4,7 +4,7 @@ const userRequest = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
       ? `${process.env.taskManager}/users`
-      : 'http://localhost:4000/users'
+      : 'https://localhost:4000/users'
 })
 
 // auth
