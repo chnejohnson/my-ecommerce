@@ -25,8 +25,13 @@ export default {
   },
 
   async mounted() {
-    await this.$store.dispatch('user/getProfile')
-    await this.$store.dispatch('user/getAvatar', this.profile._id)
+    try {
+      await this.$store.dispatch('user/getProfile')
+      await this.$store.dispatch('user/getAvatar', this.profile._id)
+    } catch (e) {
+      console.log(e.message)
+      this.$router.push({ path: '/' })
+    }
   },
   methods: {
     async onFileChange(e) {

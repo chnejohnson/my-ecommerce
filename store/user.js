@@ -2,7 +2,12 @@ import { apiProfile, apiUploadAvatar, apiGetAvatar } from './api'
 
 export const state = () => ({
   hasAvatar: false,
-  profile: null
+  profile: {
+    name: '',
+    email: '',
+    createAt: '',
+    updatedAt: ''
+  }
 })
 
 export const getters = {
@@ -23,9 +28,9 @@ export const mutations = {
   GET_PROFILE(state, data) {
     console.log('profile got')
     state.hasAvatar = false
-    state.profile = data
+    state.profile = { ...data }
   },
-  UPLOAD_AVATAR(state, res) {
+  UPLOAD_AVATAR() {
     console.log('avatar uploaded')
   },
   GET_AVATAR(state) {
@@ -39,7 +44,7 @@ export const actions = {
       const res = await apiProfile()
       commit('GET_PROFILE', res.data)
     } catch (e) {
-      throw new Error(e)
+      throw new Error(e.message)
     }
   },
   async uploadAvatar({ commit }, file) {

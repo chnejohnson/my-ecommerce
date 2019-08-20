@@ -26,11 +26,7 @@ export default {
   },
   methods: {
     async logout() {
-      try {
-        await this.$store.dispatch('auth/logout')
-      } catch (e) {
-        console.log(e.response)
-      }
+      await this.$store.dispatch('auth/logout')
     }
   }
 }

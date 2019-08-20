@@ -26,7 +26,4 @@ export const apiUploadAvatar = (file) =>
   userRequest.post('/me/avatar', file, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   })
-export const apiGetAvatar = (userId) =>
-  userRequest.get(`/${userId}/avatar`, {
-    headers: { Authorization: `Bearer ${localStorage.token}` }
-  })
+export const apiGetAvatar = (userId) => userRequest.get(`/${userId}/avatar`)

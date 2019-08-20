@@ -17,10 +17,11 @@ export const mutations = {
     localStorage.token = data.token
     state.isLogin = true
   },
-  LOGOUT(state, res) {
-    console.log(res)
+  LOGOUT(state) {
+    console.log('logout')
     localStorage.removeItem('token')
     state.isLogin = false
+    // if (state.user.profile) state.user.profile = null
   },
   CHANGE_ISLOGIN(state) {
     state.isLogin = true
@@ -37,7 +38,7 @@ export const actions = {
     }
   },
 
-  async login({ commit, state }, data) {
+  async login({ commit }, data) {
     try {
       const res = await apiLogin(data)
       commit('LOGIN', res.data)
@@ -46,8 +47,12 @@ export const actions = {
     }
   },
 
-  async logout({ commit, state }) {
-    const res = await apiLogout()
-    commit('LOGOUT', res)
+  async logout({ commit }) {
+    try {
+      await apiLogout()
+      commit('LOGOUT')
+    } catch (e) {
+      throw new Error(e)
+    }
   }
 }
