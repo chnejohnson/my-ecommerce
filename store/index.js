@@ -28,13 +28,4 @@ export const mutations = {
   }
 }
 
-export const actions = {
-  async nuxtServerInit({ dispatch }, { app }) {
-    try {
-      console.log('call nuxtServerInit')
-      await dispatch('products/getStoryblok', app)
-    } catch (e) {
-      throw new Error(e.message)
-    }
-  }
-}
+export const actions = {}

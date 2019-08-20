@@ -18,15 +18,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import AppLoader from '~/components/AppLoader'
 import AppCartDisplay from '~/components/AppCartDisplay'
 import AppCartSteps from '~/components/AppCartSteps'
 
 export default {
   components: {
     AppCartDisplay,
-    AppCartSteps,
-    AppLoader
+    AppCartSteps
   },
   computed: {
     ...mapState(['cartUIStatus'])

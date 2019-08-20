@@ -1,7 +1,7 @@
 <template lang="pug">
   .account
     .avatar
-      img(:src="$store.state.user.avatar" )
+      img(:src="avatar" )
       label 上傳
         input(type="file" @change="onFileChange")
     .profile
@@ -18,25 +18,23 @@ import { mapGetters } from 'vuex'
 
 export default {
   layout: 'dashboard',
+  middleware: 'profile',
+
   computed: {
-    ...mapGetters({ profile: 'user/profile' })
+    ...mapGetters({ profile: 'user/profile', avatar: 'user/avatar' })
   },
-  // validate({ store }) {
-  //   if (!store.state.auth.isLogin) {
-  //     return false
-  //   }
-  // },
-  mounted() {
-    if (!this.$store.state.user.profile) {
-      this.$store.dispatch('user/getProfile')
-    }
+
+  async mounted() {
+    await this.$store.dispatch('user/getProfile')
+    await this.$store.dispatch('user/getAvatar', this.profile._id)
   },
   methods: {
-    onFileChange(e) {
+    async onFileChange(e) {
       const files = e.target.files
       const bodyformData = new FormData()
       bodyformData.append('avatar', files[0])
-      this.$store.dispatch('user/uploadAvatar', bodyformData)
+      await this.$store.dispatch('user/uploadAvatar', bodyformData)
+      await this.$store.dispatch('user/getAvatar', this.profile._id)
     }
   }
 }

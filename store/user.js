@@ -1,7 +1,7 @@
-import { apiProfile, apiUploadAvatar } from './api'
+import { apiProfile, apiUploadAvatar, apiGetAvatar } from './api'
 
 export const state = () => ({
-  avatar: 'http://placehold.it/100x100',
+  hasAvatar: false,
   profile: null
 })
 
@@ -9,16 +9,27 @@ export const getters = {
   profile(state) {
     if (!state.profile) return 'not found'
     return state.profile
+  },
+  avatar(state) {
+    if (state.hasAvatar) {
+      return `http://localhost:4000/users/${state.profile._id}/avatar`
+    } else {
+      return 'http://placehold.it/200x200'
+    }
   }
 }
 
 export const mutations = {
   GET_PROFILE(state, data) {
-    console.log(data)
+    console.log('profile got')
+    state.hasAvatar = false
     state.profile = data
   },
   UPLOAD_AVATAR(state, res) {
-    console.log(res)
+    console.log('avatar uploaded')
+  },
+  GET_AVATAR(state) {
+    state.hasAvatar = true
   }
 }
 
@@ -37,6 +48,14 @@ export const actions = {
       commit('UPLOAD_AVATAR', res)
     } catch (e) {
       throw new Error(e)
+    }
+  },
+  async getAvatar({ commit }, userId) {
+    try {
+      await apiGetAvatar(userId)
+      commit('GET_AVATAR')
+    } catch (e) {
+      console.log('avatar not found')
     }
   }
 }

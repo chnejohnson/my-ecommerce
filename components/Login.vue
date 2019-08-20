@@ -37,6 +37,7 @@ export default {
           email: this.email,
           password: this.password
         })
+
         el.disabled = true
         this.loading = '成功登入'
         this.$emit('close-modal')

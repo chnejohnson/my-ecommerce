@@ -9,6 +9,9 @@ import AppStoreGrid from '~/components/AppStoreGrid.vue'
 export default {
   components: {
     AppStoreGrid
+  },
+  async asyncData({ store, app }) {
+    await store.dispatch('products/getStoryblok', app)
   }
 }
 </script>
