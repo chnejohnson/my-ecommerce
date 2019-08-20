@@ -17,9 +17,11 @@ export const getters = {
   },
   avatar(state) {
     if (state.hasAvatar) {
-      return `http://localhost:4000/users/${state.profile._id}/avatar`
+      return process.env.NODE_ENV === 'production'
+        ? `${process.env.taskManager}/users/${state.profile._id}/avatar`
+        : `http://localhost:4000/users/${state.profile._id}/avatar`
     } else {
-      return 'http://placehold.it/200x200'
+      return 'https://placehold.it/200x200'
     }
   }
 }
