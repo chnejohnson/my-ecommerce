@@ -7,9 +7,11 @@
             img(:src="item.img")
         h3 {{item.name}}
         p {{item.description}}
-        h4.price {{item.price | dollar}}    
-        NuxtLink(:to="`product/${item.id}`")
-          button View Item
+        h4.price {{item.price | dollar}}  
+        div 
+          NuxtLink(:to="`product/${item.id}`")
+            button 商品資訊
+          button(@click="createTask(item)") 加入待購清單 
     aside
       h3 特賣
       p 好康活動只到7/15 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -39,6 +41,13 @@ export default {
     filteredPrice() {
       return this.dat.filter((el) => {
         return el.price < this.priceRange
+      })
+    }
+  },
+  methods: {
+    createTask(item) {
+      this.$store.dispatch('task/createTask', {
+        description: item.name
       })
     }
   }

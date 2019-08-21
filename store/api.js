@@ -7,6 +7,13 @@ const userRequest = axios.create({
       : 'http://localhost:4000/users'
 })
 
+const taskRequest = axios.create({
+  baseURL:
+    process.env.NODE_ENV === 'production'
+      ? `${process.env.taskManager}/tasks`
+      : 'http://localhost:4000/tasks'
+})
+
 // auth
 export const apiSignup = (data) => userRequest.post('/', data)
 export const apiLogin = (data) => userRequest.post('/login', data)
@@ -27,3 +34,17 @@ export const apiUploadAvatar = (file) =>
     headers: { Authorization: `Bearer ${localStorage.token}` }
   })
 export const apiGetAvatar = (userId) => userRequest.get(`/${userId}/avatar`)
+
+// task
+export const apiCreateTask = (data) =>
+  taskRequest.post('/', data, {
+    headers: { Authorization: `Bearer ${localStorage.token}` }
+  })
+export const apiGetUserTasks = () =>
+  taskRequest.get('/', {
+    headers: { Authorization: `Bearer ${localStorage.token}` }
+  })
+export const apiDeleteTask = (taskId) =>
+  taskRequest.delete(`/${taskId}`, {
+    headers: { Authorization: `Bearer ${localStorage.token}` }
+  })
