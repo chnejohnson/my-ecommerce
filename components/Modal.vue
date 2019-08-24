@@ -44,6 +44,12 @@ export default {
   border-radius: 10px;
   position: relative;
   z-index: 2;
+  @include media($tablet) {
+    width: 400px;
+  }
+  @include media($mobile) {
+    margin: 0 10px;
+  }
 }
 
 .toggle {

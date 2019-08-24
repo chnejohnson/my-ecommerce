@@ -33,9 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .default {
-  border: 10px solid #ccc;
   min-height: 100vh;
-  font-size: 16px;
 }
 
 main {

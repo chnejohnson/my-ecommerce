@@ -1,18 +1,16 @@
 <template lang="pug">
   div
+    .banner
+      .img
+        h1.banner-title Pinkoi for Man
     h1 {{teaser.headline}}
     p.content {{teaser.content}}
-    button(@click="persist") persist
+   
 </template>
 
 <script>
 export default {
   components: {},
-  data() {
-    return {
-      test: 'hello'
-    }
-  },
   async asyncData(context) {
     try {
       const res = await context.app.$storyapi.get('cdn/stories/home', {
@@ -25,16 +23,41 @@ export default {
     } catch (e) {
       throw new Error(e.message)
     }
-  },
-  methods: {
-    persist() {
-      localStorage.test = this.test
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/css/mixin.scss';
+.banner {
+  height: 400px;
+  .img {
+    left: 0;
+    position: absolute;
+    background: url('../static/cover.jpeg') no-repeat center;
+    background-size: cover;
+    width: 100vw;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.img > h1 {
+  color: white;
+  line-height: 100px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  font-size: 5vw;
+  @include media($tablet) {
+    line-height: 60px;
+  }
+  @include media($mobile) {
+    font-size: 10vw;
+  }
+}
+
 .content {
   white-space: pre-line;
 }
