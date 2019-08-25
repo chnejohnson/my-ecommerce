@@ -54,7 +54,7 @@ export default {
       {
         accessToken:
           process.env.NODE_ENV === 'production'
-            ? 'q32q4MGtQBlJpZ88t45f4Qtt'
+            ? process.env.STORYBLOK_PUBLICK_KEY
             : 'JRApuATxy6Jr3ojknK1YSgtt',
         cacheProvider: 'memory'
       }
@@ -75,6 +75,7 @@ export default {
     extend(config, ctx) {}
   },
   env: {
-    taskManager: process.env.TASK_MANAGER
+    taskManager: process.env.TASK_MANAGER,
+    stroyblokPublicKey: process.env.STORYBLOK_PUBLICK_KEY
   }
 }
