@@ -34,7 +34,7 @@ footer {
 
 .callout {
   width: 100%;
-  height: 280px;
+  height: 200px;
   background: url('/footer.jpeg') center center no-repeat;
   background-size: cover;
   background-color: rgb(100, 100, 100);
