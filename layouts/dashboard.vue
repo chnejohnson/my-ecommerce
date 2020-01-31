@@ -1,7 +1,7 @@
 <template lang="pug">
   .dashboard
     .nav
-      nuxt-link(to="/").no-underline 瘋狂購物城
+      nuxt-link(to="/").no-underline Cetacea
       a 登出
     .content
       aside.sidebar

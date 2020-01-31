@@ -1,7 +1,7 @@
 <template lang="pug">
   footer
     section.callout
-      h2.banner-title "男人必備，探索更多"
+      h2.banner-title "探索更多"
     section
       .info
         .link

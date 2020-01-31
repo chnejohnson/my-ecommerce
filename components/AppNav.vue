@@ -1,6 +1,6 @@
 <template lang="pug">
   header
-    h1 瘋狂購物城
+    h1 Cetacea
     nav
       ul
         li
