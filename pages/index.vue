@@ -2,7 +2,7 @@
   div
     .banner
       .img
-        h1.banner-title Pinkoi for Man
+        h1.banner-title Cetacea for Man
     h1 {{teaser.headline}}
     p.content {{teaser.content}}
    

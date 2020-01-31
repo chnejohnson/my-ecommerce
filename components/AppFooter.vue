@@ -20,8 +20,8 @@
           a 媒體報導
           a 工作機會
       .mark
-        h2 Pinkoi
-        div 2019 Pinkoi. All Rights Reserved.
+        h2 Cetacea
+        div 2020 Cetacea. All Rights Reserved.
   
 </template>
 
