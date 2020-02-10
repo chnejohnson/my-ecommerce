@@ -16,10 +16,10 @@
       h3 特賣
       p 好康活動只到7/15 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       h3 價格過濾
-      p ${{priceRange}} 以下的產品
+      p {{priceRange | dollar}} 以下的產品
       input(type="range" v-model="priceRange" :min="min" :max="max" step="1")
-      span.min ${{min}}
-      span.max ${{max}}
+      span.min {{min | dollar}}
+      span.max {{max | dollar}}
 </template>
 
 <script>
@@ -40,7 +40,7 @@ export default {
   computed: {
     filteredPrice() {
       return this.dat.filter((el) => {
-        return el.price < this.priceRange
+        return Number(el.price) < this.priceRange
       })
     }
   },

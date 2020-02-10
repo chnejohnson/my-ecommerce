@@ -34,7 +34,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [`~/plugins/currency-filter.js`],
+  plugins: ['@/plugins/currency-filter.js'],
   /*
    ** Nuxt.js dev-modules
    */
